@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>quartz classifier</title>
+</head>
+<body align="center" bgcolor="WhiteSmoke">
+<img src="https://raw.githubusercontent.com/ZHUGUODONG1/picture/main/CUGB_logo_2021.png">
+ <div class="login"  align="center">
+	<h1>quartz classifier</h1>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <fieldset>
+        <input type="number" name="Al(ppm)" placeholder="Al(ppm)" required="required" step="any"/>
+        <input type="number" name="Ti(ppm)" placeholder="Ti(ppm)" required="required" step="any"/>
+        <input type="number" name="Li(ppm)" placeholder="Li(ppm)" required="required" step="any"/>
+        <input type="number" name="Ge(ppm)" placeholder="Ge(ppm)" required="required" step="any"/>
+		<input type="number" name="Sr(ppm)" placeholder="Sr(ppm)" required="required" step="any"/>
+        <button type="submit" class="btn btn-primary btn-block btn-large" style="background-color: ;width: 76px;height: 36px;color: blue">predict</button>
+        </fieldset>
+    </form>
+   <br>
+   <br>
+   {{ prediction_text }}
+ </div >
+</body>
+</html>
+
