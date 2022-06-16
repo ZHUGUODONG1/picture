@@ -1,18 +1,11 @@
 import torch
-import numpy
-import flask
-import sklearn
 import numpy as np
 from flask import request,Flask,render_template
-from jinja2 import escape
 from sklearn import preprocessing
 import torch.nn.functional as Fun
 
 app=Flask(__name__)
-print(torch.__version__)
-print(numpy.__version__)
-print(flask.__version__)
-print(sklearn.__version__)
+
 @app.route("/")
 def Home():
     return render_template("index.html")
@@ -35,10 +28,7 @@ def predict():
     outputs = model(a)
     prediction = torch.max(outputs, 1)[1]
     prediction = prediction.data.numpy()
-    # prediction=get_prediction(a)
-    # return dtype[prediction[0]]
     prediction=dtype[prediction[0]]
-    # print(prediction)
     return render_template("index.html",prediction_text=prediction)
 
 if __name__ =="__main__":
@@ -69,8 +59,6 @@ if __name__ =="__main__":
             x = self.out(x)  # 输出层不用激活函数
             return x
 
-
-
     model = Net(n_feature=5, n_hidden=100, n_output=9)
-    model=torch.load('Classifier.pth')
+    model.load_state_dict(torch.load('Classifier1.pth'))
     app.run(debug=True)
