@@ -2,12 +2,11 @@ import torch
 import numpy
 import flask
 import sklearn
-
 import numpy as np
-from flask import request ,Flask,render_template
+from flask import request,Flask,render_template
+from jinja2 import escape
 from sklearn import preprocessing
 import torch.nn.functional as Fun
-
 
 app=Flask(__name__)
 print(torch.__version__)
